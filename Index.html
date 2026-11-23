@@ -1,0 +1,1138 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lotuzt AI Tools — All-in-One AI Content Creator Suite</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #070b14;
+      color: #f1f5f9;
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #0b1120; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .glass {
+      background: rgba(15, 23, 42, 0.84);
+      border: 1px solid rgba(51, 65, 85, 0.72);
+      backdrop-filter: blur(12px);
+    }
+    .lotuzt-grad {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+    }
+    .lotuzt-grad:hover { filter: brightness(1.08); }
+    .nav-pill.active {
+      background: linear-gradient(135deg, rgba(99,102,241,0.22), rgba(236,72,153,0.16));
+      border-color: rgba(129,140,248,0.65);
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
+  <!-- Header -->
+  <header class="sticky top-0 z-30 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="w-9 h-9 rounded-xl lotuzt-grad flex items-center justify-center shrink-0 shadow-lg shadow-indigo-500/25">
+          <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <h1 class="text-sm sm:text-base font-extrabold tracking-tight text-white truncate">Lotuzt AI Tools</h1>
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Pro Suite</span>
+          </div>
+          <p class="text-[11px] text-slate-400 truncate hidden sm:block">All-in-One AI Content Creator Suite &bull; Karakter Konsisten, Pabrik Konten, Video &amp; Prompt Library</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <span id="engineBadge" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          Mode Otomatis
+        </span>
+        <button id="openHistoryBtn" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          <i data-lucide="folder-clock" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span class="hidden sm:inline">Riwayat</span>
+          <span id="historyCount" class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-700 text-slate-200">0</span>
+        </button>
+        <button id="openApiModalBtn" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          <i data-lucide="key-round" class="w-3.5 h-3.5 text-indigo-400"></i>
+          <span class="hidden sm:inline">API Gemini</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Module Selector Grid (8 Core Modules like JAJA v2, all interactive in-app) -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-2">
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+      <button type="button" data-module="influencer" class="nav-pill active glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="clapperboard" class="w-4 h-4 text-indigo-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300">UTAMA</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">Influencer Maker</div>
+      </button>
+
+      <button type="button" data-module="factory" class="nav-pill glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="factory" class="w-4 h-4 text-violet-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">5 TOOL</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">Pabrik Konten</div>
+      </button>
+
+      <button type="button" data-module="video" class="nav-pill glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="video" class="w-4 h-4 text-pink-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-pink-500/20 text-pink-300">PRO</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">Video Generator</div>
+      </button>
+
+      <button type="button" data-module="character" class="nav-pill glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="user-check" class="w-4 h-4 text-sky-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300">DNA</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">Character &amp; Clone</div>
+      </button>
+
+      <button type="button" data-module="image" class="nav-pill glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="image" class="w-4 h-4 text-amber-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">8K</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">Image Studio</div>
+      </button>
+
+      <button type="button" data-module="ugc" class="nav-pill glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-emerald-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">ADS</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">UGC &amp; Affiliate</div>
+      </button>
+
+      <button type="button" data-module="library" class="nav-pill glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="book-open" class="w-4 h-4 text-teal-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-teal-500/20 text-teal-300">SIAP</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">Prompt Library</div>
+      </button>
+
+      <button type="button" data-module="export" class="nav-pill glass rounded-xl p-2.5 text-left transition hover:border-indigo-500/50">
+        <div class="flex items-center justify-between mb-1">
+          <i data-lucide="download" class="w-4 h-4 text-orange-400"></i>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-orange-500/20 text-orange-300">BATCH</span>
+        </div>
+        <div class="text-xs font-bold text-white leading-tight">Export &amp; SEO</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+    <!-- MODULE 1: INFLUENCER MAKER -->
+    <section id="mod-influencer" class="module-pane grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-5 space-y-4">
+        <div class="glass rounded-2xl p-5 space-y-3.5">
+          <div class="flex items-center justify-between gap-2">
+            <h2 class="text-xs font-bold text-indigo-300 uppercase tracking-wider">1. Kunci Karakter AI (Consistency Lock)</h2>
+            <select id="presetCharacter" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="sasa">Preset: Sasa (Mukbang)</option>
+              <option value="raka">Preset: Raka (Riding)</option>
+              <option value="nadia">Preset: Nadia (Horror)</option>
+              <option value="alya">Preset: Alya (UGC)</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="charName" class="block text-xs text-slate-300 mb-1">Nama Karakter</label>
+              <input id="charName" type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+            <div>
+              <label for="visualStyle" class="block text-xs text-slate-300 mb-1">Gaya Visual</label>
+              <select id="visualStyle" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="Hyper-realistic 8K photograph, natural skin texture, DSLR 35mm">Realistis 8K</option>
+                <option value="3D Pixar-style animated character, expressive face, vibrant lighting">3D Pixar Style</option>
+                <option value="Cinematic moody film look, dramatic shadows, anamorphic lens">Sinematik Film</option>
+                <option value="Modern high-detail anime illustration, clean cel shading">Anime Modern</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="charAppearance" class="block text-xs text-slate-300 mb-1">Ciri Fisik &amp; Wajah Tetap</label>
+            <textarea id="charAppearance" rows="2" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="charOutfit" class="block text-xs text-slate-300 mb-1">Pakaian Tetap</label>
+              <input id="charOutfit" type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+            <div>
+              <label for="charProps" class="block text-xs text-slate-300 mb-1">Lokasi &amp; Properti</label>
+              <input id="charProps" type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+            </div>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-5 space-y-3.5">
+          <h2 class="text-xs font-bold text-violet-300 uppercase tracking-wider">2. Ide Cerita &amp; Pengaturan</h2>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="nicheSelect" class="block text-xs text-slate-300 mb-1">Niche Konten</label>
+              <select id="nicheSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                <option value="mukbang">Mukbang &amp; Kuliner</option>
+                <option value="riding">Riding / Vlog Virtual</option>
+                <option value="horror">Storytelling / Horror</option>
+                <option value="ugc">UGC / Promosi Produk</option>
+                <option value="edukasi">Edukasi &amp; Fakta</option>
+              </select>
+            </div>
+            <div>
+              <label for="aspectRatio" class="block text-xs text-slate-300 mb-1">Platform &amp; Rasio</label>
+              <select id="aspectRatio" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                <option value="9:16">TikTok / Reels / Shorts (9:16)</option>
+                <option value="16:9">YouTube Landscape (16:9)</option>
+                <option value="1:1">Instagram Feed (1:1)</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="storyIdea" class="block text-xs text-slate-300 mb-1">Ide Cerita / Misi Konten</label>
+            <textarea id="storyIdea" rows="2" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white"></textarea>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="sceneCount" class="block text-xs text-slate-300 mb-1">Jumlah Scene</label>
+              <select id="sceneCount" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                <option value="4">4 Scene</option>
+                <option value="6">6 Scene</option>
+                <option value="8" selected>8 Scene</option>
+                <option value="10">10 Scene</option>
+              </select>
+            </div>
+            <div>
+              <label for="sceneDuration" class="block text-xs text-slate-300 mb-1">Durasi / Scene</label>
+              <select id="sceneDuration" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                <option value="5">5 Detik</option>
+                <option value="8" selected>8 Detik</option>
+              </select>
+            </div>
+          </div>
+          <button id="generateBtn" type="button" class="w-full lotuzt-grad text-white font-semibold text-sm py-2.5 px-4 rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Generate Pipeline Otomatis</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 glass rounded-2xl p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xs font-bold text-emerald-300 uppercase tracking-wider">3. Storyboard &amp; Prompt Terkunci</h2>
+            <p id="summaryStats" class="text-xs text-slate-400 mt-0.5"></p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button id="copyAllImgBtn" type="button" class="px-2.5 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 inline-flex items-center gap-1.5">
+              <i data-lucide="image" class="w-3.5 h-3.5 text-indigo-400"></i> Salin Semua Gambar
+            </button>
+            <button id="copyAllVidBtn" type="button" class="px-2.5 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 inline-flex items-center gap-1.5">
+              <i data-lucide="video" class="w-3.5 h-3.5 text-pink-400"></i> Salin Semua Video
+            </button>
+          </div>
+        </div>
+        <div id="storyboardPanel" class="space-y-3 max-h-[650px] overflow-y-auto pr-1"></div>
+      </div>
+    </section>
+
+    <!-- MODULE 2: PABRIK KONTEN (CONTENT FACTORY) -->
+    <section id="mod-factory" class="module-pane hidden space-y-5">
+      <div class="glass rounded-2xl p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="text-sm font-bold text-white">Pabrik Konten Otomatis (5 Sub-Modul Aktif)</h2>
+            <p class="text-xs text-slate-400">Pilih format produksi massal, isi topik singkat, dan dapatkan naskah + breakdown scene siap produksi.</p>
+          </div>
+          <div class="flex flex-wrap gap-1.5" id="factorySubTabs">
+            <button type="button" data-factory="drama" class="factory-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white">Drama Studio</button>
+            <button type="button" data-factory="podcast" class="factory-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">Podcast 2 Host</button>
+            <button type="button" data-factory="music" class="factory-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">Music Clip V2</button>
+            <button type="button" data-factory="metaads" class="factory-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">Meta Ads Konversi</button>
+            <button type="button" data-factory="extractor" class="factory-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700">Scene Extractor</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <div class="lg:col-span-5 space-y-3">
+            <div>
+              <label for="factoryTopic" class="block text-xs font-medium text-slate-300 mb-1" id="factoryInputLabel">Premis Cerita / Topik Konten</label>
+              <textarea id="factoryTopic" rows="4" placeholder="Contoh: Dua sahabat berdebat soal apakah AI akan menggantikan editor video, lalu menemukan solusi kolaborasi..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="factoryTone" class="block text-xs font-medium text-slate-300 mb-1">Tone / Gaya</label>
+                <select id="factoryTone" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                  <option value="Emosional &amp; Relatable">Emosional &amp; Relatable</option>
+                  <option value="Santai &amp; Komedi">Santai &amp; Komedi</option>
+                  <option value="Tegang &amp; Misterius">Tegang &amp; Misterius</option>
+                  <option value="Profesional &amp; Persuasif">Profesional &amp; Persuasif</option>
+                </select>
+              </div>
+              <div>
+                <label for="factoryParts" class="block text-xs font-medium text-slate-300 mb-1">Jumlah Bagian</label>
+                <select id="factoryParts" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+                  <option value="4">4 Bagian</option>
+                  <option value="6" selected>6 Bagian</option>
+                  <option value="8">8 Bagian</option>
+                </select>
+              </div>
+            </div>
+            <button id="runFactoryBtn" type="button" class="w-full lotuzt-grad text-white font-semibold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
+              <i data-lucide="zap" class="w-4 h-4"></i> Produksi Konten Sekarang
+            </button>
+          </div>
+          <div class="lg:col-span-7 bg-slate-950/70 border border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-300 uppercase" id="factoryOutputTitle">Output Drama Studio</span>
+              <button id="copyFactoryBtn" type="button" class="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin Semua
+              </button>
+            </div>
+            <div id="factoryOutput" class="space-y-2.5 max-h-[420px] overflow-y-auto pr-1 text-xs text-slate-200"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 3: VIDEO GENERATOR & MOTION CONTROL -->
+    <section id="mod-video" class="module-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-5 glass rounded-2xl p-5 space-y-4">
+        <h2 class="text-sm font-bold text-white">Video Prompt &amp; Motion Control Studio</h2>
+        <div>
+          <label for="vidMode" class="block text-xs text-slate-300 mb-1">Mode Video</label>
+          <select id="vidMode" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <option value="Motion Control">Motion Control (Kontrol Kamera Presisi)</option>
+            <option value="Drama Video">Drama Video (Ekspresi &amp; Dialog)</option>
+            <option value="Influencer Video">Influencer Video (Vlog / Mukbang)</option>
+            <option value="UGC Video">UGC Video (Demo Produk)</option>
+            <option value="Podcast Video">Podcast Video (Lip-Sync &amp; Gestur)</option>
+            <option value="Music Video">Music Video (Beat-Synced Visual)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="vidCamera" class="block text-xs text-slate-300 mb-1">Gerakan Kamera</label>
+            <select id="vidCamera" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="Slow cinematic push-in">Slow Push-In</option>
+              <option value="Smooth orbital arc left to right">Orbit / Arc</option>
+              <option value="Dynamic FPV tracking shot">FPV Tracking</option>
+              <option value="Locked tripod with subtle handheld breathing">Tripod + Micro Motion</option>
+              <option value="Whip pan transition to reveal subject">Whip Pan Reveal</option>
+            </select>
+          </div>
+          <div>
+            <label for="vidModel" class="block text-xs text-slate-300 mb-1">Target AI Video</label>
+            <select id="vidModel" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="Google Veo 3 / Flow">Google Veo 3 / Flow</option>
+              <option value="Kling 1.6 / 2.0">Kling AI</option>
+              <option value="Runway Gen-4">Runway Gen-4</option>
+              <option value="Hailuo Minimax">Hailuo / Minimax</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="vidSubject" class="block text-xs text-slate-300 mb-1">Subjek &amp; Aksi di Frame</label>
+          <textarea id="vidSubject" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">Karakter tersenyum ke kamera sambil mengangkat mangkuk mie goreng berasap, uap naik perlahan, rambut bergerak lembut terkena angin AC</textarea>
+        </div>
+        <button id="genVideoPromptBtn" type="button" class="w-full lotuzt-grad text-white font-semibold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
+          <i data-lucide="film" class="w-4 h-4"></i> Rakit Prompt Video Presisi
+        </button>
+      </div>
+      <div class="lg:col-span-7 glass rounded-2xl p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold text-pink-300 uppercase">Hasil Prompt Video Siap Tempel</h3>
+          <button id="copySingleVidBtn" type="button" class="px-3 py-1.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 inline-flex items-center gap-1.5">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin Prompt
+          </button>
+        </div>
+        <div id="singleVidOutput" class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 text-xs sm:text-sm text-slate-200 leading-relaxed whitespace-pre-line"></div>
+        <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-4 space-y-2">
+          <h4 class="text-xs font-bold text-slate-300">Parameter Teknis yang Disisipkan Otomatis</h4>
+          <p id="vidTechNotes" class="text-xs text-slate-400 leading-relaxed"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 4: CHARACTER GENERATOR & CHARACTER CLONE -->
+    <section id="mod-character" class="module-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-5 glass rounded-2xl p-5 space-y-4">
+        <h2 class="text-sm font-bold text-white">Character Generator &amp; Character Clone</h2>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="cloneBase" class="block text-xs text-slate-300 mb-1">Identitas Karakter Sumber</label>
+            <input id="cloneBase" type="text" value="Sasa, 22yo Indonesian woman, shoulder-length dark brown hair with bangs, warm smile" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
+          </div>
+          <div>
+            <label for="cloneOutfit" class="block text-xs text-slate-300 mb-1">Outfit Baru (Clone ke Skenario Baru)</label>
+            <input id="cloneOutfit" type="text" value="Sporty pastel windbreaker &amp; white sneakers" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
+          </div>
+        </div>
+        <div>
+          <label for="cloneLocation" class="block text-xs text-slate-300 mb-1">Lokasi / Aktivitas Baru</label>
+          <input id="cloneLocation" type="text" value="Jogging di taman kota Jakarta saat pagi hari dengan cahaya matahari lembut" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
+        </div>
+        <button id="genCloneBtn" type="button" class="w-full lotuzt-grad text-white font-semibold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
+          <i data-lucide="users" class="w-4 h-4"></i> Generate 4-Pose Character Sheet &amp; Clone
+        </button>
+      </div>
+      <div class="lg:col-span-7 glass rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold text-sky-300 uppercase">4 Variasi Prompt Konsisten (Character Sheet + Clone)</h3>
+          <button id="copyCloneBtn" type="button" class="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin Semua
+          </button>
+        </div>
+        <div id="cloneOutput" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+      </div>
+    </section>
+
+    <!-- MODULE 5: IMAGE PROMPT STUDIO -->
+    <section id="mod-image" class="module-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-5 glass rounded-2xl p-5 space-y-3.5">
+        <h2 class="text-sm font-bold text-white">Image Prompt Studio (8K &amp; Sinematik)</h2>
+        <div>
+          <label for="imgSubject" class="block text-xs text-slate-300 mb-1">Subjek Utama</label>
+          <textarea id="imgSubject" rows="2" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">Kreator muda Indonesia sedang rekaman podcast di studio estetik dengan mikrofon kondensor dan lampu neon ungu</textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="imgLighting" class="block text-xs text-slate-300 mb-1">Pencahayaan</label>
+            <select id="imgLighting" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="Soft golden hour sunlight with warm rim light">Golden Hour</option>
+              <option value="Moody cyberpunk neon rim lighting, volumetric fog">Neon Studio</option>
+              <option value="Clean softbox studio key light, crisp commercial look">Softbox Komersial</option>
+              <option value="Dramatic chiaroscuro low-key lighting">Dramatic Low-Key</option>
+            </select>
+          </div>
+          <div>
+            <label for="imgLens" class="block text-xs text-slate-300 mb-1">Lensa &amp; Kamera</label>
+            <select id="imgLens" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+              <option value="35mm f/1.8 prime lens, shallow depth of field">35mm f/1.8</option>
+              <option value="85mm f/1.4 portrait lens, creamy bokeh">85mm f/1.4 Portrait</option>
+              <option value="24mm wide-angle anamorphic cinematic">24mm Wide Anamorphic</option>
+              <option value="100mm macro commercial lens">100mm Macro Produk</option>
+            </select>
+          </div>
+        </div>
+        <button id="genImgStudioBtn" type="button" class="w-full lotuzt-grad text-white font-semibold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
+          <i data-lucide="wand-2" class="w-4 h-4"></i> Generate Master Image Prompt
+        </button>
+      </div>
+      <div class="lg:col-span-7 glass rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold text-amber-300 uppercase">Positive &amp; Negative Prompt</h3>
+          <button id="copyImgStudioBtn" type="button" class="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin Positive Prompt
+          </button>
+        </div>
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
+          <span class="text-[11px] font-bold text-emerald-400 uppercase">Positive Prompt</span>
+          <p id="imgPositiveOut" class="text-xs sm:text-sm text-slate-200 leading-relaxed"></p>
+        </div>
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2">
+          <span class="text-[11px] font-bold text-rose-400 uppercase">Negative Prompt (Hindari Distorsi)</span>
+          <p id="imgNegativeOut" class="text-xs text-slate-400 leading-relaxed"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 6: UGC KONTEN & AFFILIATE -->
+    <section id="mod-ugc" class="module-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-5 glass rounded-2xl p-5 space-y-3.5">
+        <h2 class="text-sm font-bold text-white">UGC &amp; Affiliate Konten Generator</h2>
+        <div>
+          <label for="ugcProduct" class="block text-xs text-slate-300 mb-1">Nama Produk</label>
+          <input id="ugcProduct" type="text" value="Serum Vitamin C Brightening 20ml" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
+        </div>
+        <div>
+          <label for="ugcPain" class="block text-xs text-slate-300 mb-1">Masalah Utama Audiens (Pain Point)</label>
+          <input id="ugcPain" type="text" value="Wajah kusam, bekas jerawat susah hilang, dan kulit tampak lelah" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
+        </div>
+        <div>
+          <label for="ugcBenefit" class="block text-xs text-slate-300 mb-1">Keunggulan Utama</label>
+          <input id="ugcBenefit" type="text" value="Cepat meresap, tidak lengket, mencerahkan dalam 7 hari" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
+        </div>
+        <button id="genUgcBtn" type="button" class="w-full lotuzt-grad text-white font-semibold text-xs py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i> Buat Skrip &amp; Shotlist UGC
+        </button>
+      </div>
+      <div class="lg:col-span-7 glass rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold text-emerald-300 uppercase">Struktur Konten Konversi Tinggi (AIDA + Hook)</h3>
+          <button id="copyUgcBtn" type="button" class="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin Skrip
+          </button>
+        </div>
+        <div id="ugcOutput" class="space-y-2.5 max-h-[420px] overflow-y-auto pr-1"></div>
+      </div>
+    </section>
+
+    <!-- MODULE 7: PROMPT SIAP PAKAI (LIBRARY PRO) -->
+    <section id="mod-library" class="module-pane hidden grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div class="lg:col-span-4 glass rounded-2xl p-5 space-y-3.5">
+        <h2 class="text-sm font-bold text-white">Prompt Siap Pakai (Library Pro)</h2>
+        <div>
+          <label for="libLang" class="block text-xs text-slate-300 mb-1">Bahasa Prompt</label>
+          <select id="libLang" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <option value="id">Indonesia</option>
+            <option value="en">English (Optimal untuk AI Video/Image)</option>
+          </select>
+        </div>
+        <div>
+          <label for="libSelect" class="block text-xs text-slate-300 mb-1">Pilih Template Prompt</label>
+          <select id="libSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <option value="motion">Motion Control Detail</option>
+            <option value="mukbang">Mukbang Konsisten 8 Scene</option>
+            <option value="horror">Horror Sinematik Atmospheric</option>
+            <option value="podcast">Podcast 2 Host Studio</option>
+            <option value="charsheet">Character Sheet 3-View Reference</option>
+          </select>
+        </div>
+        <div>
+          <label for="libVar" class="block text-xs text-slate-300 mb-1">Variabel Kustom (Subjek/Produk)</label>
+          <input id="libVar" type="text" value="Sasa / Mie Goreng Raksasa" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white" />
+        </div>
+      </div>
+      <div class="lg:col-span-8 glass rounded-2xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 id="libTitle" class="text-xs font-bold text-teal-300 uppercase">Motion Control Detail</h3>
+          <button id="copyLibBtn" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-600 hover:bg-teal-500 text-white inline-flex items-center gap-1.5">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> COPY PROMPT
+          </button>
+        </div>
+        <textarea id="libOutput" rows="11" class="w-full bg-slate-950/90 border border-slate-800 rounded-xl p-4 text-xs sm:text-sm text-slate-200 leading-relaxed focus:outline-none focus:ring-1 focus:ring-teal-500"></textarea>
+      </div>
+    </section>
+
+    <!-- MODULE 8: EXPORT & SEO -->
+    <section id="mod-export" class="module-pane hidden space-y-5">
+      <div class="glass rounded-2xl p-5 space-y-4">
+        <h2 class="text-sm font-bold text-white">Paket Publikasi SEO &amp; Export Otomatis</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-indigo-300 uppercase">Judul Video Rekomendasi</span>
+              <button id="copyTitleBtn" type="button" class="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1"><i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin</button>
+            </div>
+            <p id="seoTitle" class="text-sm font-semibold text-white"></p>
+          </div>
+          <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-violet-300 uppercase">Caption &amp; Hashtag</span>
+              <button id="copyCaptionBtn" type="button" class="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1"><i data-lucide="copy" class="w-3.5 h-3.5"></i> Salin</button>
+            </div>
+            <p id="seoCaption" class="text-xs text-slate-300 whitespace-pre-line leading-relaxed"></p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          <button id="exportJsonBtn" type="button" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-white">
+            <i data-lucide="file-json" class="w-4 h-4 text-amber-400"></i> Download JSON (n8n / Make)
+          </button>
+          <button id="exportCsvBtn" type="button" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-white">
+            <i data-lucide="table" class="w-4 h-4 text-emerald-400"></i> Download CSV (Sheets / Excel)
+          </button>
+          <button id="exportMdBtn" type="button" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-white">
+            <i data-lucide="file-text" class="w-4 h-4 text-sky-400"></i> Download Markdown (.md)
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- API Modal -->
+  <div id="apiModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass rounded-2xl max-w-md w-full p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-bold text-white">Pengaturan Gemini API (Opsional)</h3>
+        <button id="closeApiModalBtn" type="button" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Tanpa API key, seluruh modul <strong>Lotuzt AI Tools</strong> berjalan penuh dengan <strong>Mode Otomatis</strong>. Masukkan Gemini API key jika ingin generasi naskah &amp; prompt dinamis secara langsung (disimpan lokal di browser).
+      </p>
+      <input id="apiKeyInput" type="password" placeholder="AIzaSy..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+      <div class="flex justify-end gap-2">
+        <button id="clearApiBtn" type="button" class="px-3 py-2 rounded-lg text-xs text-slate-300 hover:bg-slate-800">Hapus</button>
+        <button id="saveApiBtn" type="button" class="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Modal -->
+  <div id="historyModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass rounded-2xl max-w-lg w-full p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-bold text-white">Riwayat Proyek (Project Vault)</h3>
+        <button id="closeHistoryBtn" type="button" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <div id="historyList" class="space-y-2 max-h-72 overflow-y-auto text-xs"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="hidden fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-medium text-white shadow-xl flex items-center gap-2">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMsg">Berhasil!</span>
+  </div>
+
+  <script>
+    const PRESETS = {
+      sasa: { name: 'Sasa', appearance: 'Young Indonesian woman, 22yo, cheerful expressive face, shoulder-length dark brown hair with light bangs', outfit: 'Oversized cream knit sweater with rolled sleeves', props: 'Warm cozy indoor dining table, giant ceramic white bowl, wooden chopsticks, soft ring light', niche: 'mukbang', idea: 'Sasa melakukan misi mukbang mie goreng ekstra pedas menggunakan mangkuk raksasa' },
+      raka: { name: 'Raka', appearance: 'Young Indonesian man, 25yo, energetic smile, short textured black hair, athletic build', outfit: 'Black windbreaker riding jacket, matte open-face helmet, riding gloves', props: 'Sport-touring motorcycle, scenic coastal mountain road at golden hour', niche: 'riding', idea: 'Raka riding pagi menembus jalan pegunungan sambil berbagi tips healing akhir pekan' },
+      nadia: { name: 'Nadia', appearance: 'Indonesian woman, 24yo, intense expressive eyes, long straight black hair', outfit: 'Dark charcoal turtleneck and vintage flannel overshirt', props: 'Dimly lit wooden room, flickering warm desk lamp, rain on window glass', niche: 'horror', idea: 'Nadia menceritakan kisah misteri penunggu pos ronda tengah malam' },
+      alya: { name: 'Alya', appearance: 'Indonesian woman, 23yo, glowing healthy skin, neat low ponytail, warm approachable smile', outfit: 'Pastel sage linen blazer over white minimalist t-shirt', props: 'Bright aesthetic bedroom desk, minimalist skincare bottle, soft morning window light', niche: 'ugc', idea: 'Alya mereview jujur serum pencerah wajah selama 7 hari pemakaian' }
+    };
+
+    const SCENE_TEMPLATES = {
+      mukbang: [
+        { phase: 'Hook', camera: 'Medium Close-Up, Eye Level', action: 'looking excitedly at the massive bowl, holding chopsticks up', vo: 'Guys! Hari ini aku dikasih misi gila: habisin satu porsi raksasa ini sendirian!' },
+        { phase: 'Detail Visual', camera: 'Extreme Close-Up 45-deg', action: 'lifting steaming noodles with chopsticks showing rich spices', vo: 'Lihat teksturnya, bumbunya melimpah banget dan aromanya langsung bikin laper.' },
+        { phase: 'Suapan Pertama', camera: 'Close-Up Portrait', action: 'taking a big first bite with eyes widening in amazement', vo: 'Bismillah, suapan pertama... wah, ini sih pecah banget rasanya di mulut!' },
+        { phase: 'Reaksi', camera: 'Medium Shot', action: 'nodding enthusiastically while chewing, giving a thumbs up', vo: 'Pedasnya nendang tapi gurihnya bikin nggak bisa berhenti ngunyah.' },
+        { phase: 'Aksi Utama', camera: 'Dynamic Slight Low Angle', action: 'eating happily with half the giant bowl already finished', vo: 'Udah setengah jalan tapi rasanya masih seenak suapan pertama, seriusan!' },
+        { phase: 'Momen Seru', camera: 'Close-Up', action: 'wiping forehead playfully from the spice while smiling', vo: 'Keringat mulai keluar nih, tapi pantang menyerah sebelum mangkuknya bersih.' },
+        { phase: 'Suapan Akhir', camera: 'Medium Close-Up', action: 'showing the nearly empty bowl and finishing the final bite', vo: 'Dikit lagi habis! Tinggal satu suapan terakhir buat nutup misi hari ini.' },
+        { phase: 'CTA Penutup', camera: 'Medium Shot, Warm Smile', action: 'holding the clean empty bowl proudly and waving at camera', vo: 'Misi sukses! Berikutnya enaknya mukbang apa lagi ya? Komen di bawah!' }
+      ],
+      riding: [
+        { phase: 'Hook', camera: 'POV Helmet Cam', action: 'starting the motorcycle engine with scenic mountain road ahead', vo: 'Nggak perlu jauh-jauh keluar negeri, rute pagi ini pemandangannya gokil!' },
+        { phase: 'Persiapan', camera: 'Medium Side Shot', action: 'adjusting helmet visor and gloves before rolling out', vo: 'Jam 6 pagi udara masih seger banget, pas buat lepas penat.' },
+        { phase: 'Cruising', camera: 'Tracking Three-Quarter Shot', action: 'cruising smoothly along winding road in golden hour sunlight', vo: 'Tikungan di jalur ini mulus banget, angin paginya bikin pikiran plong.' },
+        { phase: 'Panorama', camera: 'Wide Cinematic Shot', action: 'riding past dramatic hills with morning mist', vo: 'Lihat sebelah kiri, kabut tipisnya masih turun di atas bukit.' },
+        { phase: 'Monolog', camera: 'Close-Up Visor', action: 'glancing briefly toward camera at steady pace', vo: 'Kadang kita cuma butuh waktu sebentar di jalan buat ngobrol sama diri sendiri.' },
+        { phase: 'Pit Stop', camera: 'Medium Shot', action: 'parking at a scenic overlook and taking off gloves', vo: 'Berhenti sebentar di spot favorit buat nikmatin suasana pagi.' },
+        { phase: 'Golden Hour', camera: 'Low Angle Silhouette', action: 'standing beside the motorcycle looking over the horizon', vo: 'Momen kayak gini yang selalu bikin kangen balik lagi ke jalanan.' },
+        { phase: 'CTA Penutup', camera: 'POV Riding Away', action: 'giving a friendly peace sign and riding forward', vo: 'Kalian paling suka riding ke mana pas weekend? Share di komentar!' }
+      ],
+      horror: [
+        { phase: 'Hook', camera: 'Close-Up Low-Key', action: 'leaning slightly into warm lamp light with a serious whisper', vo: 'Jangan pernah menoleh ke belakang kalau dengar suara langkah kaki jam 2 pagi.' },
+        { phase: 'Awal Cerita', camera: 'Medium Moody Shot', action: 'gesturing calmly while describing the quiet neighborhood', vo: 'Kejadian ini dialami temenku waktu terpaksa pulang lembur sendirian.' },
+        { phase: 'Ketegangan', camera: 'Tight Close-Up Eyes', action: 'pausing dramatically as faint lightning flashes outside', vo: 'Awalnya sepi, sampai lampu jalan di belakangnya mati satu per satu.' },
+        { phase: 'Penampakan', camera: 'Over-the-Shoulder', action: 'looking nervously toward the dark doorway in background', vo: 'Dari sudut matanya, ada sosok tinggi berdiri diam di pos ronda tanpa bayangan.' },
+        { phase: 'Klimaks', camera: 'Dutch Angle Close-Up', action: 'wide-eyed expression speaking faster with tense posture', vo: 'Pas dia mempercepat langkah, suara bisikan itu terdengar tepat di sebelah telinga!' },
+        { phase: 'Plot Twist', camera: 'Slow Zoom-In', action: 'taking a deep breath and lowering voice to eerie tone', vo: 'Ternyata sosok itu bukan mengikuti... tapi memperingatkan bahaya di depan rumahnya.' },
+        { phase: 'Penutup', camera: 'Medium Dimming Light', action: 'sitting back slowly as shadows deepen', vo: 'Sejak malam itu, nggak ada warga yang berani lewat gang itu tengah malam.' },
+        { phase: 'CTA Penutup', camera: 'Direct Gaze Close-Up', action: 'looking straight into lens with subtle knowing look', vo: 'Pernah ngalamin kejadian aneh pas pulang malam? Ceritain di komentar.' }
+      ],
+      ugc: [
+        { phase: 'Hook', camera: 'Close-Up Natural Light', action: 'holding product near face with intrigued expression', vo: 'Awalnya aku ragu produk ini beneran ngaruh atau cuma viral doang!' },
+        { phase: 'Masalah', camera: 'Medium Close-Up', action: 'pointing lightly to skin while explaining daily struggle', vo: 'Kalau aktivitas seharian di luar, kulit gampang banget kelihatan kusam.' },
+        { phase: 'Solusi', camera: 'Macro Product Shot', action: 'showing sleek bottle texture clearly to camera', vo: 'Akhirnya aku cobain rutin 7 hari, teksturnya ringan dan cepat meresap.' },
+        { phase: 'Demo', camera: 'Close-Up Application', action: 'applying a small drop gently and smiling', vo: 'Cara pakainya gampang, cukup 2 tetes pagi dan malam.' },
+        { phase: 'Hasil', camera: 'Portrait Glow Shot', action: 'turning face slightly showing healthy natural glow', vo: 'Ini hasilnya setelah seminggu: lebih lembap dan nggak lengket.' },
+        { phase: 'Keunggulan', camera: 'Medium Shot', action: 'holding product next to smile listing benefits', vo: 'Cocok banget buat pemula karena formulanya lembut.' },
+        { phase: 'Review', camera: 'Medium Close-Up', action: 'nodding confidently giving authentic recommendation', vo: 'Menurutku ini worth it banget buat masuk rutinitas harian kamu.' },
+        { phase: 'CTA Penutup', camera: 'Close-Up with Product', action: 'pointing down toward link area with warm smile', vo: 'Mumpung stok masih ada, langsung cek keranjang atau link di bio sekarang!' }
+      ],
+      edukasi: [
+        { phase: 'Hook', camera: 'Medium Close-Up Studio', action: 'raising one finger with curious engaging expression', vo: 'Trik simpel ini bisa menghemat waktu kerja kamu sampai 2 jam sehari!' },
+        { phase: 'Fakta 1', camera: 'Medium Shot', action: 'explaining clearly with natural hand gestures', vo: 'Pertama, kelompokkan tugas yang mirip supaya fokus nggak gampang pecah.' },
+        { phase: 'Visualisasi', camera: 'Over-the-Shoulder Desk', action: 'pointing toward clean organized workspace', vo: 'Dengan alur yang rapi dari awal, hasil akhirnya jadi jauh lebih konsisten.' },
+        { phase: 'Fakta 2', camera: 'Close-Up', action: 'smiling and emphasizing the second key point', vo: 'Kedua, manfaatkan template dan otomatisasi untuk pekerjaan berulang.' },
+        { phase: 'Perbandingan', camera: 'Medium Shot', action: 'contrasting manual habit vs smart workflow', vo: 'Yang biasanya makan waktu berjam-jam, sekarang selesai dalam hitungan menit.' },
+        { phase: 'Tips Pro', camera: 'Medium Close-Up', action: 'leaning in slightly to share pro tip', vo: 'Bonusnya, kamu jadi punya lebih banyak waktu buat ide kreatif.' },
+        { phase: 'Ringkasan', camera: 'Medium Shot', action: 'nodding reassuringly to viewer', vo: 'Mulai aja dari satu kebiasaan kecil hari ini.' },
+        { phase: 'CTA Penutup', camera: 'Close-Up Smile', action: 'pointing to save/follow gesture', vo: 'Save video ini biar nggak lupa, dan follow untuk tips lainnya!' }
+      ]
+    };
+
+    const PROMPT_LIBRARY = {
+      motion: {
+        title: 'Motion Control Detail',
+        id: `Kontrol Kamera Presisi: Smooth orbital tracking shot bergerak melingkar 30 derajat ke kanan mengelilingi [SUBJEK], menjaga wajah tetap tajam di tengah frame (center-locked), transisi fokus perlahan ke latar belakang bokeh, gerakan rambut dan pakaian natural, pencahayaan konsisten, 60fps smooth motion, tanpa distorsi.`,
+        en: `Precision Motion Control: Smooth 30-degree orbital tracking shot moving clockwise around [SUBJEK], keeping the subject's face locked in the center of the frame, subtle rack focus to creamy background bokeh, natural micro-expressions and cloth physics, consistent studio lighting, ultra-smooth 24fps cinematic motion, zero morphing.`
+      },
+      mukbang: {
+        title: 'Mukbang Konsisten 8 Scene',
+        id: `Karakter [SUBJEK] duduk di meja makan kayu hangat dengan mangkuk keramik raksasa di depannya. Pakaian, gaya rambut, pencahayaan ring-light, dan posisi kamera eye-level tetap identik di seluruh 8 scene. Ekspresi antusias saat mengangkat sumpit dengan uap makanan mengepul.`,
+        en: `Consistent AI Influencer [SUBJEK] seated at a warm wooden dining table with a giant white ceramic bowl in front. Identical outfit, hairstyle, soft ring-light setup, and eye-level framing locked across all 8 scenes. Expressive happy reaction while lifting steaming noodles with chopsticks, photorealistic 8K.`
+      },
+      horror: {
+        title: 'Horror Sinematik Atmospheric',
+        id: `Suasana malam mencekam di ruangan kayu tua dengan satu lampu meja redup berkedip. [SUBJEK] berbicara dengan nada berbisik ke kamera, bayangan tajam (chiaroscuro), rintik hujan terlihat di kaca jendela belakang, nuansa film horor sinematik.`,
+        en: `Eerie midnight atmosphere inside an old dimly lit wooden room with a single flickering warm desk lamp. [SUBJEK] leaning slightly forward whispering to the camera, dramatic chiaroscuro shadows, rain droplets on window glass behind, anamorphic 35mm horror cinema look.`
+      },
+      podcast: {
+        title: 'Podcast 2 Host Studio',
+        id: `Dua host AI [SUBJEK] duduk berhadapan di studio podcast modern dengan mikrofon kondensor profesional, meja kayu gelap, dan aksen lampu neon lembut di belakang. Pencahayaan softbox merata, sudut kamera two-shot sinematik, gestur tangan natural saat berdiskusi.`,
+        en: `Two charismatic AI hosts [SUBJEK] seated across from each other in a modern acoustic podcast studio with broadcast condenser microphones, dark walnut table, and subtle ambient neon accent lights. Clean commercial softbox lighting, cinematic two-shot framing, natural conversational gestures.`
+      },
+      charsheet: {
+        title: 'Character Sheet 3-View Reference',
+        id: `Lembar referensi karakter lengkap untuk [SUBJEK]: tampak depan (front view), tampak samping (side profile), dan tampak tiga perempat (3/4 view) dalam satu kanvas bersih berlatar abu-abu netral. Proporsi tubuh, fitur wajah, dan detail pakaian 100% seragam.`,
+        en: `Full character reference sheet of [SUBJEK] showing front view, side profile, and 3/4 view standing side by side on a clean neutral studio gray background. Identical facial structure, hairstyle, outfit details, and lighting across all three angles, 8K character design sheet.`
+      }
+    };
+
+    const el = (id) => document.getElementById(id);
+    let state = {
+      activeModule: 'influencer',
+      activeFactory: 'drama',
+      scenes: [],
+      seo: { title: '', caption: '' },
+      apiKey: '',
+      history: []
+    };
+
+    try {
+      state.apiKey = localStorage.getItem('lotuzt_gemini_key') || '';
+      state.history = JSON.parse(localStorage.getItem('lotuzt_history') || '[]');
+    } catch {
+      state.apiKey = '';
+      state.history = [];
+    }
+
+    function showToast(msg) {
+      el('toastMsg').textContent = msg;
+      el('toast').classList.remove('hidden');
+      clearTimeout(window.__lotuztToast);
+      window.__lotuztToast = setTimeout(() => el('toast').classList.add('hidden'), 2400);
+    }
+
+    async function copyText(text, msg) {
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          throw new Error('fallback');
+        }
+      } catch {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      showToast(msg || 'Berhasil disalin!');
+    }
+
+    function updateEngineBadge() {
+      const badge = el('engineBadge');
+      if (state.apiKey) {
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-500/20 text-indigo-300 border border-indigo-500/40';
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Gemini AI Aktif';
+      } else {
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30';
+        badge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Mode Otomatis';
+      }
+      el('historyCount').textContent = String(state.history.length);
+    }
+
+    function switchModule(modName) {
+      state.activeModule = modName;
+      document.querySelectorAll('.module-pane').forEach((p) => p.classList.add('hidden'));
+      const target = el(`mod-${modName}`);
+      if (target) target.classList.remove('hidden');
+      document.querySelectorAll('.nav-pill').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.module === modName);
+      });
+    }
+
+    function applyPreset(key) {
+      if (!PRESETS[key]) return;
+      const p = PRESETS[key];
+      el('charName').value = p.name;
+      el('charAppearance').value = p.appearance;
+      el('charOutfit').value = p.outfit;
+      el('charProps').value = p.props;
+      el('nicheSelect').value = p.niche;
+      el('storyIdea').value = p.idea;
+    }
+
+    function saveToHistory(title, scenes) {
+      const item = {
+        id: Date.now(),
+        title,
+        charName: el('charName').value.trim() || 'Karakter AI',
+        niche: el('nicheSelect').value,
+        count: scenes.length,
+        time: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
+      };
+      state.history = [item, ...state.history].slice(0, 12);
+      try { localStorage.setItem('lotuzt_history', JSON.stringify(state.history)); } catch {}
+      updateEngineBadge();
+    }
+
+    function buildOfflinePipeline(saveHistory = false) {
+      const charName = el('charName').value.trim() || 'Karakter AI';
+      const appearance = el('charAppearance').value.trim() || 'Consistent character';
+      const outfit = el('charOutfit').value.trim() || 'Consistent outfit';
+      const props = el('charProps').value.trim() || 'Consistent studio';
+      const style = el('visualStyle').value;
+      const niche = el('nicheSelect').value;
+      const ratio = el('aspectRatio').value;
+      const count = parseInt(el('sceneCount').value, 10) || 8;
+      const duration = parseInt(el('sceneDuration').value, 10) || 8;
+      const idea = el('storyIdea').value.trim() || `${charName} membuat konten ${niche}`;
+
+      const pool = SCENE_TEMPLATES[niche] || SCENE_TEMPLATES.mukbang;
+      const scenes = [];
+      for (let i = 0; i < count; i++) {
+        const tpl = pool[i % pool.length];
+        const anchor = `${charName}, ${appearance}, wearing ${outfit}, in ${props}`;
+        scenes.push({
+          id: i + 1,
+          phase: tpl.phase,
+          duration,
+          camera: tpl.camera,
+          vo: tpl.vo,
+          imagePrompt: `${style}. ${anchor}. Shot: ${tpl.camera}. Action: ${tpl.action}. Context: ${idea}. Consistent face, hair, outfit, and props. Aspect ratio ${ratio}.`,
+          videoPrompt: `Smooth ${duration}s AI video, ${tpl.camera}. ${charName} (${outfit}) ${tpl.action}. Natural facial expressions, consistent lighting (${props}), realistic camera motion, ${ratio}.`
+        });
+      }
+      const tags = {
+        mukbang: '#mukbang #kuliner #lotuztai #fyp',
+        riding: '#riding #motovlog #healing #lotuztai #fyp',
+        horror: '#horrorstory #misteri #lotuztai #fyp',
+        ugc: '#reviewjujur #ugc #rekomendasi #fyp',
+        edukasi: '#tipsproduktif #faktaunik #lotuztai #fyp'
+      };
+      state.scenes = scenes;
+      state.seo = {
+        title: `${idea.slice(0, 70)}${idea.length > 70 ? '...' : ''} (${count} Scene)`,
+        caption: `${idea}\n\nDiproduksi dengan Lotuzt AI Tools (${charName} konsisten ${count} scene).\n\n${tags[niche] || '#lotuztai #kontenkreator #fyp'}`
+      };
+      if (saveHistory) saveToHistory(state.seo.title, scenes);
+    }
+
+    async function generateWithGemini() {
+      const charName = el('charName').value.trim() || 'Karakter AI';
+      const appearance = el('charAppearance').value.trim();
+      const outfit = el('charOutfit').value.trim();
+      const props = el('charProps').value.trim();
+      const style = el('visualStyle').value;
+      const niche = el('nicheSelect').value;
+      const ratio = el('aspectRatio').value;
+      const count = parseInt(el('sceneCount').value, 10) || 8;
+      const duration = parseInt(el('sceneDuration').value, 10) || 8;
+      const idea = el('storyIdea').value.trim();
+
+      const prompt = `Buat storyboard video konten kreator AI ${count} scene (${duration}s per scene) dalam JSON murni.
+Karakter: ${charName} (${appearance}), pakaian: ${outfit}, lokasi/properti: ${props}. Gaya: ${style}. Niche: ${niche}. Rasio: ${ratio}. Ide: ${idea}.
+imagePrompt & videoPrompt dalam bahasa Inggris dengan pengulangan detail karakter agar konsisten. vo dalam bahasa Indonesia.
+Format: {"title":"...","caption":"...","scenes":[{"id":1,"phase":"Hook","duration":${duration},"camera":"...","vo":"...","imagePrompt":"...","videoPrompt":"..."}]}`;
+
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(state.apiKey)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: 'application/json' } })
+      });
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+      const parsed = JSON.parse(data.candidates[0].content.parts[0].text);
+      state.scenes = parsed.scenes;
+      state.seo = { title: parsed.title, caption: parsed.caption };
+      saveToHistory(state.seo.title, state.scenes);
+    }
+
+    function renderStoryboard() {
+      const count = state.scenes.length;
+      const dur = state.scenes[0]?.duration || 8;
+      el('summaryStats').textContent = `${count} Scene • Total ${count * dur} Detik • Rasio ${el('aspectRatio').value} • Karakter Terkunci`;
+      el('storyboardPanel').innerHTML = state.scenes.map((s, idx) => `
+        <article class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 space-y-2.5">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 text-xs font-bold">Scene ${s.id}</span>
+            <span class="text-xs font-semibold text-white">${s.phase}</span>
+            <span class="text-[11px] text-slate-400">&bull; ${s.duration}s &bull; ${s.camera}</span>
+          </div>
+          <input data-vo-idx="${idx}" type="text" value="${s.vo.replace(/"/g, '&quot;')}" class="vo-input w-full bg-slate-950/80 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+            <div class="bg-slate-950/70 border border-slate-800 rounded-lg p-2.5 space-y-1">
+              <div class="flex justify-between items-center">
+                <span class="text-[11px] font-semibold text-indigo-300">Prompt Gambar</span>
+                <button type="button" data-copy-img="${idx}" class="copy-img-btn text-[11px] text-slate-300 hover:text-white inline-flex items-center gap-1"><i data-lucide="copy" class="w-3 h-3"></i> Salin</button>
+              </div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">${s.imagePrompt}</p>
+            </div>
+            <div class="bg-slate-950/70 border border-slate-800 rounded-lg p-2.5 space-y-1">
+              <div class="flex justify-between items-center">
+                <span class="text-[11px] font-semibold text-pink-300">Prompt Video</span>
+                <button type="button" data-copy-vid="${idx}" class="copy-vid-btn text-[11px] text-slate-300 hover:text-white inline-flex items-center gap-1"><i data-lucide="copy" class="w-3 h-3"></i> Salin</button>
+              </div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">${s.videoPrompt}</p>
+            </div>
+          </div>
+        </article>
+      `).join('');
+      el('seoTitle').textContent = state.seo.title;
+      el('seoCaption').textContent = state.seo.caption;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Factory Module
+    function renderFactory() {
+      const topic = el('factoryTopic').value.trim() || 'Kreator AI yang membantu UMKM naik omzet lewat konten otomatis';
+      const tone = el('factoryTone').value;
+      const parts = parseInt(el('factoryParts').value, 10) || 6;
+      const modeMap = {
+        drama: { title: 'Output Drama Studio', label: 'Konflik & Premis Drama', role: 'Adegan' },
+        podcast: { title: 'Output Podcast 2 Host', label: 'Topik Diskusi Podcast', role: 'Segmen' },
+        music: { title: 'Output Music Clip V2', label: 'Lirik / Konsep Lagu', role: 'Verse/Chorus' },
+        metaads: { title: 'Output Meta Ads Konversi', label: 'Produk & Penawaran Iklan', role: 'Slide Iklan' },
+        extractor: { title: 'Output Scene Extractor', label: 'Teks / Naskah Panjang', role: 'Scene Diekstrak' }
+      };
+      const cfg = modeMap[state.activeFactory];
+      el('factoryOutputTitle').textContent = cfg.title;
+      const items = [];
+      for (let i = 1; i <= parts; i++) {
+        const focus = i === 1 ? 'Hook Pembuka' : i === parts ? 'Penutup & CTA' : `Pengembangan ${i}`;
+        items.push(`
+          <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3 space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-indigo-300">${cfg.role} ${i} — ${focus}</span>
+              <span class="text-[10px] text-slate-400">${tone}</span>
+            </div>
+            <p class="text-slate-200 leading-relaxed">${state.activeFactory === 'podcast' ? `Host A & Host B membahas: "${topic}" dari sudut pandang ${focus.toLowerCase()}.` : `Visual & naskah untuk "${topic}" pada fase ${focus.toLowerCase()} dengan gaya ${tone.toLowerCase()}.`}</p>
+            <p class="text-[11px] text-slate-400 font-mono">Prompt: Cinematic ${state.activeFactory} frame, ${focus}, topic: ${topic}, tone: ${tone}, 8K sharp.</p>
+          </div>
+        `);
+      }
+      el('factoryOutput').innerHTML = items.join('');
+    }
+
+    // Video Module
+    function renderVideoModule() {
+      const mode = el('vidMode').value;
+      const cam = el('vidCamera').value;
+      const model = el('vidModel').value;
+      const subj = el('vidSubject').value.trim();
+      const prompt = `[${mode} | Target: ${model}]\n${subj}. Camera movement: ${cam}. Natural micro-expressions, physically accurate motion, consistent lighting and subject identity, smooth 24fps, zero artifacts.`;
+      el('singleVidOutput').textContent = prompt;
+      el('vidTechNotes').textContent = `Mode: ${mode} • Kamera: ${cam} • Dioptimalkan untuk: ${model}. Tips: Gunakan gambar hasil Image Studio sebagai frame awal (Image-to-Video) agar wajah tetap konsisten.`;
+    }
+
+    // Character Clone Module
+    function renderCloneModule() {
+      const base = el('cloneBase').value.trim();
+      const outfit = el('cloneOutfit').value.trim();
+      const loc = el('cloneLocation').value.trim();
+      const poses = [
+        { label: 'Pose 1 — Front Portrait', shot: 'Medium Close-Up looking straight at camera with warm smile' },
+        { label: 'Pose 2 — Action Shot', shot: 'Dynamic three-quarter action shot in motion' },
+        { label: 'Pose 3 — Candid Side', shot: 'Natural candid side-angle shot with soft rim light' },
+        { label: 'Pose 4 — Wide Context', shot: 'Full-body wide shot showing full outfit and environment' }
+      ];
+      el('cloneOutput').innerHTML = poses.map((p) => `
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3 space-y-1.5">
+          <div class="text-xs font-bold text-sky-300">${p.label}</div>
+          <p class="text-[11px] text-slate-300 leading-relaxed">Photorealistic 8K. ${base}, wearing ${outfit}, ${loc}. ${p.shot}. Locked facial identity and hair consistency.</p>
+        </div>
+      `).join('');
+    }
+
+    // Image Studio Module
+    function renderImageStudio() {
+      const subj = el('imgSubject').value.trim();
+      const light = el('imgLighting').value;
+      const lens = el('imgLens').value;
+      el('imgPositiveOut').textContent = `Masterpiece 8K photorealistic shot of ${subj}. Lighting: ${light}. Camera: ${lens}. Natural skin pores, crisp fabric texture, balanced color grading, editorial quality.`;
+      el('imgNegativeOut').textContent = `blurry, lowres, extra fingers, mutated hands, deformed face, watermark, text, logo, oversaturated, plastic skin, duplicate limbs`;
+    }
+
+    // UGC Module
+    function renderUgcModule() {
+      const prod = el('ugcProduct').value.trim();
+      const pain = el('ugcPain').value.trim();
+      const ben = el('ugcBenefit').value.trim();
+      const steps = [
+        { stage: '1. Hook (0-3 detik)', text: `"Stop scroll! Buat kamu yang sering ngalamin ${pain}, wajib lihat ini!"`, shot: 'Close-up wajah ekspresif + teks besar di layar.' },
+        { stage: '2. Masalah & Empati (3-8 detik)', text: `"Dulu aku juga capek banget cari solusi buat ${pain} yang nggak kunjung kelar."`, shot: 'Medium shot sambil memegang produk.' },
+        { stage: '3. Demo Produk (8-18 detik)', text: `"Sampai akhirnya ketemu ${prod}. Keunggulannya: ${ben}."`, shot: 'Macro shot tekstur & pemakaian produk.' },
+        { stage: '4. Call To Action (18-25 detik)', text: `"Mumpung masih promo, langsung cek keranjang kuning atau link di bio sekarang!"`, shot: 'Senyum ke kamera sambil menunjuk ke bawah.' }
+      ];
+      el('ugcOutput').innerHTML = steps.map((s) => `
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3 space-y-1">
+          <div class="text-xs font-bold text-emerald-300">${s.stage}</div>
+          <p class="text-xs text-white">${s.text}</p>
+          <p class="text-[11px] text-slate-400">Shot: ${s.shot}</p>
+        </div>
+      `).join('');
+    }
+
+    // Library Module
+    function renderLibrary() {
+      const lang = el('libLang').value;
+      const key = el('libSelect').value;
+      const customVar = el('libVar').value.trim() || 'Karakter AI';
+      const item = PROMPT_LIBRARY[key];
+      el('libTitle').textContent = item.title;
+      el('libOutput').value = item[lang].replace(/\[SUBJEK\]/g, customVar);
+    }
+
+    function downloadFile(filename, content, mime) {
+      const blob = new Blob([content], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`File ${filename} berhasil diunduh!`);
+    }
+
+    // Event Bindings
+    document.querySelectorAll('.nav-pill').forEach((btn) => {
+      btn.addEventListener('click', () => switchModule(btn.dataset.module));
+    });
+
+    el('presetCharacter').addEventListener('change', (e) => {
+      if (e.target.value !== 'custom') {
+        applyPreset(e.target.value);
+        buildOfflinePipeline(false);
+        renderStoryboard();
+      }
+    });
+
+    el('generateBtn').addEventListener('click', async () => {
+      const btn = el('generateBtn');
+      const old = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="animate-pulse">Memproses Pipeline...</span>';
+      try {
+        if (state.apiKey) {
+          await generateWithGemini();
+          showToast('Pipeline dibuat dengan Gemini AI!');
+        } else {
+          buildOfflinePipeline(true);
+          showToast('Pipeline Otomatis berhasil dibuat!');
+        }
+      } catch {
+        buildOfflinePipeline(true);
+        showToast('API tidak merespons, beralih ke Mode Otomatis.');
+      } finally {
+        renderStoryboard();
+        btn.disabled = false;
+        btn.innerHTML = old;
+        if (window.lucide) lucide.createIcons();
+      }
+    });
+
+    el('storyboardPanel').addEventListener('input', (e) => {
+      if (e.target.classList.contains('vo-input')) {
+        const idx = parseInt(e.target.dataset.voIdx, 10);
+        if (state.scenes[idx]) state.scenes[idx].vo = e.target.value;
+      }
+    });
+    el('storyboardPanel').addEventListener('click', (e) => {
+      const img = e.target.closest('.copy-img-btn');
+      if (img) return copyText(state.scenes[parseInt(img.dataset.copyImg, 10)].imagePrompt, 'Prompt Gambar disalin!');
+      const vid = e.target.closest('.copy-vid-btn');
+      if (vid) return copyText(state.scenes[parseInt(vid.dataset.copyVid, 10)].videoPrompt, 'Prompt Video disalin!');
+    });
+
+    el('copyAllImgBtn').addEventListener('click', () => copyText(state.scenes.map((s) => `[Scene ${s.id}]\n${s.imagePrompt}`).join('\n\n'), 'Semua Prompt Gambar disalin!'));
+    el('copyAllVidBtn').addEventListener('click', () => copyText(state.scenes.map((s) => `[Scene ${s.id}]\n${s.videoPrompt}`).join('\n\n'), 'Semua Prompt Video disalin!'));
+
+    document.querySelectorAll('.factory-tab').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.activeFactory = btn.dataset.factory;
+        document.querySelectorAll('.factory-tab').forEach((b) => {
+          const active = b.dataset.factory === state.activeFactory;
+          b.className = active ? 'factory-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white' : 'factory-tab px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700';
+        });
+        renderFactory();
+      });
+    });
+    el('runFactoryBtn').addEventListener('click', () => { renderFactory(); showToast('Konten Pabrik berhasil diproduksi!'); });
+    el('copyFactoryBtn').addEventListener('click', () => copyText(el('factoryOutput').innerText, 'Output Pabrik Konten disalin!'));
+
+    el('genVideoPromptBtn').addEventListener('click', () => { renderVideoModule(); showToast('Prompt Video dirakit!'); });
+    el('copySingleVidBtn').addEventListener('click', () => copyText(el('singleVidOutput').textContent, 'Prompt Video disalin!'));
+
+    el('genCloneBtn').addEventListener('click', () => { renderCloneModule(); showToast('Character Sheet & Clone dibuat!'); });
+    el('copyCloneBtn').addEventListener('click', () => copyText(el('cloneOutput').innerText, 'Semua pose Character Clone disalin!'));
+
+    el('genImgStudioBtn').addEventListener('click', () => { renderImageStudio(); showToast('Master Image Prompt dibuat!'); });
+    el('copyImgStudioBtn').addEventListener('click', () => copyText(el('imgPositiveOut').textContent, 'Positive Prompt disalin!'));
+
+    el('genUgcBtn').addEventListener('click', () => { renderUgcModule(); showToast('Skrip UGC & Affiliate dibuat!'); });
+    el('copyUgcBtn').addEventListener('click', () => copyText(el('ugcOutput').innerText, 'Skrip UGC disalin!'));
+
+    el('libLang').addEventListener('change', renderLibrary);
+    el('libSelect').addEventListener('change', renderLibrary);
+    el('libVar').addEventListener('input', renderLibrary);
+    el('copyLibBtn').addEventListener('click', () => copyText(el('libOutput').value, 'Prompt Library disalin!'));
+
+    el('copyTitleBtn').addEventListener('click', () => copyText(state.seo.title, 'Judul disalin!'));
+    el('copyCaptionBtn').addEventListener('click', () => copyText(state.seo.caption, 'Caption disalin!'));
+    el('exportJsonBtn').addEventListener('click', () => downloadFile('lotuzt-ai-workflow.json', JSON.stringify({ seo: state.seo, scenes: state.scenes }, null, 2), 'application/json'));
+    el('exportCsvBtn').addEventListener('click', () => {
+      const esc = (v) => `"${String(v).replace(/"/g, '""')}"`;
+      const rows = [['Scene', 'Phase', 'Duration', 'Camera', 'Voiceover', 'ImagePrompt', 'VideoPrompt'].join(',')];
+      state.scenes.forEach((s) => rows.push([s.id, esc(s.phase), s.duration, esc(s.camera), esc(s.vo), esc(s.imagePrompt), esc(s.videoPrompt)].join(',')));
+      downloadFile('lotuzt-ai-storyboard.csv', rows.join('\n'), 'text/csv;charset=utf-8;');
+    });
+    el('exportMdBtn').addEventListener('click', () => {
+      const md = `# ${state.seo.title}\n\n${state.seo.caption}\n\n` + state.scenes.map((s) => `## Scene ${s.id}: ${s.phase}\n- **VO:** ${s.vo}\n- **Image:** ${s.imagePrompt}\n- **Video:** ${s.videoPrompt}`).join('\n\n');
+      downloadFile('lotuzt-ai-script.md', md, 'text/markdown;charset=utf-8;');
+    });
+
+    // Modals
+    el('openApiModalBtn').addEventListener('click', () => { el('apiKeyInput').value = state.apiKey; el('apiModal').classList.remove('hidden'); });
+    el('closeApiModalBtn').addEventListener('click', () => el('apiModal').classList.add('hidden'));
+    el('saveApiBtn').addEventListener('click', () => {
+      state.apiKey = el('apiKeyInput').value.trim();
+      try { localStorage.setItem('lotuzt_gemini_key', state.apiKey); } catch {}
+      updateEngineBadge();
+      el('apiModal').classList.add('hidden');
+      showToast(state.apiKey ? 'Gemini API Key diaktifkan!' : 'Mode Otomatis aktif.');
+    });
+    el('clearApiBtn').addEventListener('click', () => {
+      state.apiKey = '';
+      el('apiKeyInput').value = '';
+      try { localStorage.removeItem('lotuzt_gemini_key'); } catch {}
+      updateEngineBadge();
+      el('apiModal').classList.add('hidden');
+      showToast('API Key dihapus.');
+    });
+
+    el('openHistoryBtn').addEventListener('click', () => {
+      el('historyList').innerHTML = state.history.length
+        ? state.history.map((h) => `<div class="bg-slate-900 border border-slate-800 rounded-lg p-3 flex justify-between items-center"><div><div class="font-semibold text-white">${h.title}</div><div class="text-[11px] text-slate-400">${h.charName} &bull; ${h.count} Scene &bull; ${h.time}</div></div><span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 text-[10px] uppercase">${h.niche}</span></div>`).join('')
+        : '<p class="text-slate-400 text-center py-6">Belum ada riwayat proyek tersimpan. Klik Generate Pipeline Otomatis untuk menyimpan proyek pertama Anda.</p>';
+      el('historyModal').classList.remove('hidden');
+    });
+    el('closeHistoryBtn').addEventListener('click', () => el('historyModal').classList.add('hidden'));
+
+    // Init all modules
+    applyPreset('sasa');
+    buildOfflinePipeline(false);
+    updateEngineBadge();
+    renderStoryboard();
+    renderFactory();
+    renderVideoModule();
+    renderCloneModule();
+    renderImageStudio();
+    renderUgcModule();
+    renderLibrary();
+  </script>
+</body>
+</html>
+```
